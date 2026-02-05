@@ -386,8 +386,10 @@ public class ExcelToCSharp
         string json = File.ReadAllText(libraryPath);
         pathLibrary = JsonConvert.DeserializeObject<PathLibrary_Config>(json);
         DirectoryInfo dir = new DirectoryInfo(libraryPath);
+        string projectRoot = dir.Parent.Parent.FullName;
+        string configRoot = Path.Combine(projectRoot, "Config");
 
-        excelPath = Path.Combine(dir.Parent.FullName, pathLibrary.excelPath);
+        excelPath = Path.Combine(configRoot, pathLibrary.excelPath);
         jsonPath = pathLibrary.jsonPath;
         binaryPath = pathLibrary.binaryPath;
         csharpPath = pathLibrary.csharpPath;
@@ -399,9 +401,9 @@ public class ExcelToCSharp
         string clientRoot = Directory.GetParent(Application.dataPath).FullName;
         DirectoryInfo dir = new DirectoryInfo(clientRoot);
         string projectRoot = dir.Parent.Parent.FullName;
-        string configRoot = Path.Combine(projectRoot, "Config");
+        string configRoot = Path.Combine(projectRoot, "Client");
 
-        libraryPath = Path.Combine(configRoot, "PathLibrary_Config.json");
+        libraryPath = Path.Combine(dir.Parent.FullName, "PathLibrary_Config.json");
     }
 
     [MenuItem("Tools/Excel/Json/RefreshAll")]

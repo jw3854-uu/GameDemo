@@ -19,7 +19,12 @@ public class EnumDefinitions
         Public,
         World,
     }
-
+    public enum EClueType
+    {
+        Useless = 0,
+        True = 1,
+        False = 2
+    }
     public static List<string> GetEnumNames() 
     {
         // 获取 EnumDefinitions 类的 Type

@@ -1,10 +1,8 @@
-using UnityEditor;
-using UnityEngine;
 using UnityEngine.UIElements;
-
-public class WebSocketEventVisualElement : EventVisualElement
+[UxmlElement]
+public partial class WebSocketEventVisualElement : EventVisualElement
 {
-    public new class UxmlFactory : UxmlFactory<WebSocketEventVisualElement, UxmlTraits> { }
+    //public new class UxmlFactory : UxmlFactory<WebSocketEventVisualElement, UxmlTraits> { }
     private TextField patternTextField;
     private Button addButton;
     private Button removeButton;

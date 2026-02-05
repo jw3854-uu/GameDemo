@@ -1,13 +1,10 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-
-public class CompalexBlockItem : VisualElement
+[UxmlElement]
+public partial class CompalexBlockItem : VisualElement
 {
     public int index;
     public bool isSelected;
@@ -17,7 +14,7 @@ public class CompalexBlockItem : VisualElement
     private DropdownField typeDropdown;
     private TextField variableTextField;
     private Toggle IEnumerableToggle;
-    public new class UxmlFactory : UxmlFactory<CompalexBlockItem, UxmlTraits> { }
+   //public new class UxmlFactory : UxmlFactory<CompalexBlockItem, UxmlTraits> { }
 
     public CompalexBlockItem()
     {

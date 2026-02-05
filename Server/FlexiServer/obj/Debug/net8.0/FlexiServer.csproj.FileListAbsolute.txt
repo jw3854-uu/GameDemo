@@ -108,3 +108,8 @@ F:\GameDemo\Server\FlexiServer\obj\Debug\net8.0\refint\FlexiServer.dll
 F:\GameDemo\Server\FlexiServer\obj\Debug\net8.0\FlexiServer.pdb
 F:\GameDemo\Server\FlexiServer\obj\Debug\net8.0\FlexiServer.genruntimeconfig.cache
 F:\GameDemo\Server\FlexiServer\obj\Debug\net8.0\ref\FlexiServer.dll
+F:\GameDemo\Server\FlexiServer\bin\Debug\net8.0\ConfigData\Config\Json\ItemConfig.json
+F:\GameDemo\Server\FlexiServer\bin\Debug\net8.0\ConfigData\Config\Json\languageConfig.json
+F:\GameDemo\Server\FlexiServer\bin\Debug\net8.0\ConfigData\Config\Json\MyNewExcel.json
+F:\GameDemo\Server\FlexiServer\bin\Debug\net8.0\protobuf-net.dll
+F:\GameDemo\Server\FlexiServer\bin\Debug\net8.0\protobuf-net.Reflection.dll

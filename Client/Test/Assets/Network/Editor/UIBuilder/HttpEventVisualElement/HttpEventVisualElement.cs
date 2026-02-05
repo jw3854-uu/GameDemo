@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UIElements;
-
-public class HttpEventVisualElement : EventVisualElement
+﻿using UnityEngine.UIElements;
+[UxmlElement]
+public partial class HttpEventVisualElement : EventVisualElement
 {
-    public new class UxmlFactory : UxmlFactory<HttpEventVisualElement, UxmlTraits> { }
+    //public new class UxmlFactory : UxmlFactory<HttpEventVisualElement, UxmlTraits> { }
     private TextField patternTextField;
     private ProtocolEditor requestProtocolEditor;
     private ProtocolEditor responseProtocolEditor;

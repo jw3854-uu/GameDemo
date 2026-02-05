@@ -9,7 +9,7 @@ public class CSTemplate_Config
     public const string classStr_PB =
 @"
 using System.Collections.Generic;
-using UnityEngine;
+using static EnumDefinitions;
 /// <summary>
 /// #ClassDes#
 /// <summary>
@@ -21,7 +21,7 @@ public class #ClassName# : BaseConfig
     public #ClassName#() { }
     public override void Initialize(Dictionary<string, object> _dataDic)
     {#InitContext#
-        id = int.TryParse(ID, out var tempId) ? tempId : 0;
+        id = ID;
     }
 } ";
     /// <summary>
@@ -39,7 +39,7 @@ public class #ClassName# : BaseConfig
     public const string classStr_Json =
 @"
 using System.Collections.Generic;
-using UnityEngine;
+using static EnumDefinitions;
 /// <summary>
 /// #ClassDes#
 /// <summary>

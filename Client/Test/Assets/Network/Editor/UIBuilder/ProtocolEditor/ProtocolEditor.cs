@@ -1,19 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UIElements;
 
-public class ProtocolEditor : VisualElement
+[UxmlElement]
+public partial class ProtocolEditor : VisualElement
 {
     private ScrollView requestScrollView;
     private VisualTreeAsset blockItemTemplate;
     private Label emptyLabel;
     private int selectedIndex = -1;
     private List<CompalexBlockItem> compalexBlockItems = new List<CompalexBlockItem>();
-    public new class UxmlFactory : UxmlFactory<ProtocolEditor, UxmlTraits> { }
+    //public new class UxmlFactory : UxmlFactory<ProtocolEditor, UxmlTraits> { }
     public void InitUI()
     {
         blockItemTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Network/Editor/UIBuilder/CompalexBlockItem/CompalexBlockItem.uxml");
