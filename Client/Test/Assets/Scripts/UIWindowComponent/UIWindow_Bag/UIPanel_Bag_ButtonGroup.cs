@@ -7,6 +7,7 @@ public class UIPanel_Bag_ButtonGroup : MonoBehaviour
     public BTRuntimeComponent bTRuntimeComp;
     public Button btnUse;
     public Button btnSubmit;
+    public Button btnIdentified;
 
     public void InitUI() 
     {
@@ -17,14 +18,23 @@ public class UIPanel_Bag_ButtonGroup : MonoBehaviour
         bool isClue = (EItemType)itemConfig.EItemType == EItemType.Clue;
         bool isFood = (EItemType)itemConfig.EItemType == EItemType.Food;
         bool isSurvival = (EItemType)itemConfig.EItemType == EItemType.Survival;
+        bool isUnidentified = (EItemType)itemConfig.EItemType == EItemType.Unidentified;
 
-        if (isClue)
+        if (isUnidentified) 
         {
+            bTRuntimeComp.SendMsgToBTRuntime("UIWindow_Bag_BtnIdentified_Show");
+            bTRuntimeComp.SendMsgToBTRuntime("UIWindow_Bag_BtnSubmit_Hide");
+            bTRuntimeComp.SendMsgToBTRuntime("UIWindow_Bag_BtnUse_Hide");
+        }
+        else if (isClue)
+        {
+            bTRuntimeComp.SendMsgToBTRuntime("UIWindow_Bag_BtnIdentified_Hide");
             bTRuntimeComp.SendMsgToBTRuntime("UIWindow_Bag_BtnSubmit_Show");
             bTRuntimeComp.SendMsgToBTRuntime("UIWindow_Bag_BtnUse_Hide");
         }
         else 
         {
+            bTRuntimeComp.SendMsgToBTRuntime("UIWindow_Bag_BtnIdentified_Hide");
             bTRuntimeComp.SendMsgToBTRuntime("UIWindow_Bag_BtnSubmit_Hide");
             bTRuntimeComp.SendMsgToBTRuntime("UIWindow_Bag_BtnUse_Show");
         }

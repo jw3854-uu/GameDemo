@@ -18,6 +18,7 @@ public class UIPanel_Bag_ItemView : MonoBehaviour
     }
     public void AddItems(int itemId)
     {
+        if (itemId == 0) { Debug.Log("发完了！");return; }
         currItems.Add(itemId);
         RefreshItems();
     }
