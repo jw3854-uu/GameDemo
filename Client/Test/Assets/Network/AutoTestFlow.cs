@@ -1,6 +1,8 @@
 ﻿using Network;
 using Network.API;
 using Network.Models.Common;
+using Network.Transport.WebSocket;
+using System;
 using UnityEngine;
 
 public class AutoTestFlow:MonoBehaviour

@@ -153,7 +153,15 @@ namespace Network
         }
         public void SendUdpMessage<T>(string pattern, string path, T messageObj) 
         {
-            
+            UdpMessage<T> udpMessage = new UdpMessage<T>();
+            udpMessage.InputFrame = FrameManager.Instance.LocalCurrentFrame;
+            udpMessage.Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            udpMessage.Pattern = pattern;
+            udpMessage.Path = path;
+            udpMessage.Data = messageObj;
+
+            string msg = JsonConvert.SerializeObject(udpMessage);
+            udpTransport.SendMessage(pattern, msg);
         }
         #endregion
     }

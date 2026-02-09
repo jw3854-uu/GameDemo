@@ -22,28 +22,28 @@ namespace FlexiServer.Transport
         public void RgiestTransport<T>(T? transport) where T : ITransport
         {
             if (transport == null) return;
-            transport.OnMessageReceived(OnMessageReceived);
-            transport.OnConnectionStateChanged(OnConnectionStateChanged);
+            transport.SetMessageReceivedListener(OnMessageReceived);
+            transport.SetConnectionStateChangedListener(OnConnectionStateChanged);
             transports.Add(transport);
         }
-        private void OnConnectionStateChanged(ClientConnectData connectData, EPlayerConnectionState connectionState)
+        private void OnConnectionStateChanged(SClientConnectData connectData, EPlayerConnectionState connectionState)
         {
             string account = connectData.Account;
             string clientId = connectData.ClientId;
             ClientConnEvent?.Invoke(clientId, account, connectionState);
         }
-        private void OnMessageReceived(ClientConnectData connectData, string pattern, string msg)
+        private void OnMessageReceived(SClientConnectData connectData, string pattern, string msg)
         {
             string account = connectData.Account;
             string clientId = connectData.ClientId;
             ClientMsgEvent?.Invoke(pattern, clientId, account, msg);
         }
-        public static void SendMessageToClient<T>(string clientId, string message) where T : class, ITransport
+        public static void SendMessageToClient<T>(string clientKey, string message) where T : class, ITransport
         {
             foreach (var tra in transports)
             {
                 var transport = tra as T;
-                transport?.SendMessage(clientId, message);
+                transport?.SendMessage(clientKey, message);
             }
         }
         public void OnApplicationStarted()

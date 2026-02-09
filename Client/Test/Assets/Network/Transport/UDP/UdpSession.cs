@@ -1,3 +1,6 @@
+using Network.API;
+using Network.Core.Frame;
+using Newtonsoft.Json;
 using System;
 using System.Net.Sockets;
 using System.Text;
@@ -7,11 +10,18 @@ namespace Network.Transport.Udp
 {
     internal class UdpSession : ConnectionSession<UdpClient>
     {
+        private FrameManager frameManager => FrameManager.Instance;
         public UdpSession(string host, int port) : base(host, port) { }
 
         public override void OnMessageReceived(string msg)
         {
+            UdpResult<object> udpResult = JsonConvert.DeserializeObject<UdpResult<object>>(msg);
+            if (udpResult == null) return;
             Console.WriteLine($"UDP  ’µΩ: {msg}");
+
+            frameManager.RefreshServerFrame(udpResult.ServerFrame, udpResult.Timestamp);
+            string pattern = udpResult.Pattern;
+            ApiManager.HandleUdpMessage(pattern, msg);
         }
         public void Connect() { OnConnectAsync(string.Empty); }
         protected override Task OnConnectAsync(string token)

@@ -51,7 +51,7 @@ public class NetworkCodeGenerator : EditorWindow
 
         connectionType = root.Q<DropdownField>("ConnectionType");
         connectionType.RegisterValueChangedCallback(OnConnectionTypeValueChanged);
-        connectionType.choices = new List<string>() { "Http", "WebSocket" };
+        connectionType.choices = new List<string>() { "Http", "WebSocket","Udp" };
         connectionType.SetValueWithoutNotify("Http");
 
         protocolName = root.Q<TextField>("ProtocolName");
@@ -222,9 +222,11 @@ public class NetworkCodeGenerator : EditorWindow
     {
         bool isWebSocket = evt.newValue == "WebSocket";
         bool isHttp = evt.newValue == "Http";
+        bool isUdp = evt.newValue == "Udp";
 
         if (isHttp) currEventTemplateitem = httpEventTemplate;
         if (isWebSocket) currEventTemplateitem = webSocketEventTemplate;
+        if (isUdp) currEventTemplateitem = webSocketEventTemplate;
     }
 
     public List<string> GetTempModelNames()

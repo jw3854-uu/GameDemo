@@ -14,7 +14,7 @@ namespace FlexiServer.Services
         public string Pattern => "/gamePlay";
         public void OnDataRecieved(string ClientId, string Acount, string Msg)
         {
-            WebSocketMessage<object>? recievMsg = JsonConvert.DeserializeObject<WebSocketMessage<object>>(Msg);
+            TransportMessage? recievMsg = JsonConvert.DeserializeObject<TransportMessage>(Msg);
             if (recievMsg == null) return;
 
             Console.ForegroundColor = ConsoleColor.White;
@@ -67,11 +67,6 @@ namespace FlexiServer.Services
             sendMsg.Type = EWsMessageType.Normal;
             string wsMsgStr = JsonConvert.SerializeObject(sendMsg);
             TransportManager.SendMessageToClient<WebSocketTransport>(ClientId, wsMsgStr);
-        }
-        
-        private void JoinGameHandle(string ClientId, string Path, string Msg)
-        {
-            
         }
         #endregion Function_Handle
     }

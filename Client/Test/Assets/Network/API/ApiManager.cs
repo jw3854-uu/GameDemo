@@ -12,6 +12,7 @@ namespace Network.API
         #region patternToType
         { "/chat", typeof(ChatApi) },
         { "/gamePlay", typeof(GamePlayApi) },
+        { "/playerMovement",typeof(PlayerMovementApi) }
 #endregion patternToType
     };
         private static Dictionary<Type, HttpMessageApi> httpApiDict = new Dictionary<Type, HttpMessageApi>();
@@ -36,6 +37,15 @@ namespace Network.API
                 webSoketApiDict[type] = apiInstance;
             }
             return (TApi)webSoketApiDict[type];
+        }
+        public static void HandleUdpMessage(string pattern, string msg) 
+        {
+            if (string.IsNullOrEmpty(pattern)) return;
+
+            if (patternToType.TryGetValue(pattern, out var type)) 
+            {
+
+            }
         }
         public static void HandleMessage(string pattern, string msg)
         {

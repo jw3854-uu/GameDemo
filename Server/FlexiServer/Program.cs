@@ -7,6 +7,7 @@ using FlexiServer.Models.Common;
 using FlexiServer.Sandbox;
 using FlexiServer.Services;
 using FlexiServer.Transport;
+using FlexiServer.Transport.Udp;
 using FlexiServer.Transport.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +29,7 @@ builder.Services.AddSingleton<FrameManager>();
 builder.Services.AddSingleton<TokenManager>();
 builder.Services.AddSingleton<SandboxManager>();
 builder.Services.AddSingleton<WebSocketTransport>();
+builder.Services.AddSingleton<UdpTransport>();
 
 // 注册服务(http/websocket)
 builder.AddSingletonByConfig(modules);
@@ -35,11 +37,18 @@ builder.AddSingletonByConfig(modules);
 var app = builder.Build();
 app.UseWebSockets();
 
-app.Services.GetRequiredService<TransportManager>().RgiestTransport(app.Services.GetService<WebSocketTransport>());
+WebSocketTransport? webSocket = app.Services.GetService<WebSocketTransport>();
+UdpTransport? udpTransport = app.Services.GetService<UdpTransport>();
+
+app.Services.GetRequiredService<TransportManager>().RgiestTransport(webSocket);
+app.Services.GetRequiredService<TransportManager>().RgiestTransport(udpTransport);
 app.MapWebSocketEndpoints();
 
 //注册长连接协议接口
 app.RegisterWebSocketServiceByConfig(modules);
+
+//开启Udp协议接口
+app.StartUdpListen(port);
 
 //注册协议接口
 app.MapPostByConfig(modules);
