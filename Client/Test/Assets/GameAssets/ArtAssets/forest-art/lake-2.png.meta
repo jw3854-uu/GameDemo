@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d72a1fd44fe3d0844b612ffaa28d591f
+guid: be727460b29785145b11bc4b01f452e1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5946879756807422108
-    second: forest-floor4_0
+      213: 6222987344930021022
+    second: lake-2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: forest-floor4_0
+      name: lake-2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 512
-        height: 512
+        x: 107
+        y: 38
+        width: 1948
+        height: 1515
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c90c77281af878250800000000000000
-      internalID: 5946879756807422108
+      spriteID: e9e1e48f40e7c5650800000000000000
+      internalID: 6222987344930021022
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      forest-floor4_0: 5946879756807422108
+      lake-2_0: 6222987344930021022
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
